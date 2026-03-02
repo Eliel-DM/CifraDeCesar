@@ -1,59 +1,57 @@
 <?php
 
-const indice = 5;
-$alfabeto = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
-$arrayAlfabeto = explode (",",$alfabeto);
+$indice = 5; // Salvar em um ENV 
+$palavraSegredo = "BBB"; // Salvar em um ENV 
 
-// foreach($arrayAlfabeto as $letras){
-//     echo $letras . "<br>";
-// }
 
-$palavra = "TENTAADIVINHARAI";
-$arrayPalavra = str_split($palavra);
+function getAlphabetInArray() {
+    $alfabetoInString = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+    $alfabetoInArray = explode(",", $alfabetoInString);
 
-// converter palavra para array .
-// foreach($arrayPalavra as $letras){
-//     echo $letras . "<br>";
-// }
-// comparar com o alfabeto e identificar a posição.
-for ($i=0;$i < count($arrayPalavra) ; $i++){
-    for($j=0; $j < count($arrayAlfabeto); $j++){
-        if( $arrayAlfabeto [$j] == $arrayPalavra[$i]){
-            $posi = array_search("$arrayPalavra[$i]",$arrayAlfabeto);
-            $posicoes [] = $posi +1 ;
+    return $alfabetoInArray;
+}
+
+function localityOfLetters(string $palavraSegredo) {
+
+    $alfabetoInArray = getAlphabetInArray();
+    $posicoesLetrasCorrespondentesArray = [];
+    $arrayPalavraSegredo = str_split($palavraSegredo);
+
+    for ($i = 0; $i < count($arrayPalavraSegredo); $i++) {
+        for ($j = 0; $j < count($alfabetoInArray); $j++) {
+            if ($alfabetoInArray[$j] == $arrayPalavraSegredo[$i]) {
+                $posicoesLetrasCorrespondentesArray[] = array_search("$arrayPalavraSegredo[$i]", $alfabetoInArray);
+            }
         }
     }
+    return $posicoesLetrasCorrespondentesArray;
 }
-// adicionar o índice de deslocamento.
-//print_r($posicoes);
 
-function calculatePosIndice($posicoes){
-    for ($i=0;$i < count ($posicoes);$i++){
-        $number = (int)$posicoes[$i] ;
-        $number = $number + indice -1;
-        $posicoesPosIndice [] = $number ;
+/*
+print_r(localityOfLetters($palavraSegredo)) - TESTE PARA VALIDAR SE ESTAVAM SENDO CONTADO CORRETEMENTE AS POSIÇÕES DA LETRA DE ACORDO COM O ALFABETO. 
+ex.
+A == 0 
+B == 1
+...
+*/
+
+
+function applyCryptography(array $posicoesLetrasCorrespondentesArray) {
+
+    for ($i = 0; $i < count($posicoesLetrasCorrespondentesArray); $i++) {
+        $number = $posicoesLetrasCorrespondentesArray[$i];
+        $posicoesLetrasCorrespondentesArrayCrytography[] = $number + $indice;
     }
-    return $posicoesPosIndice;
+    return $posicoesLetrasCorrespondentesArrayCrytography;
 }
 
 $posicoesPosIndice = calculatePosIndice($posicoes);
-//print_r($posicoesPosIndice);
-
-// atribuir nova letra ao primeior índice de um novo array;
 
 
-//function generateNewWord ($posicoesPosIndiceExample){
-  
-    $arrayNewPalavra = [];
-    foreach ($posicoesPosIndice as $posicaoLetra){
-        //for ($i=0;$i < count($arrayAlfabeto);$i++){
-            $arrayNewPalavra [] = $arrayAlfabeto[$posicaoLetra];  
-        //}
-    }
-     print_r($arrayNewPalavra);
-
-
-/// Criar função para trasnformar o Array novamente para String.
-/// Refatorar código,
-// validar lóigica
-// implementar funções 
+$arrayNewPalavra = [];
+foreach ($posicoesPosIndice as $posicaoLetra) {
+    //for ($i=0;$i < count($arrayAlfabeto);$i++){
+    $arrayNewPalavra[] = $alfabetoInArray[$posicaoLetra];
+    //}
+}
+print_r($arrayNewPalavra);
