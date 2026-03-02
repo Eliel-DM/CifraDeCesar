@@ -1,7 +1,6 @@
 <?php
 
-$indice = 5; // Salvar em um ENV 
-$palavraSegredo = "BBB"; // Salvar em um ENV 
+$palavraSegredo = "AAA"; // Salvar em um ENV 
 
 
 function getAlphabetInArray() {
@@ -35,23 +34,25 @@ B == 1
 ...
 */
 
+const INDICE = 5; // Adicionar a um arquivo ENV;
 
-function applyCryptography(array $posicoesLetrasCorrespondentesArray) {
+function applyCryptography($posicoesLetrasCorrespondentesArray) {
+    $posicoesLetrasCorrespondentesArrayCryptography = [];
 
-    for ($i = 0; $i < count($posicoesLetrasCorrespondentesArray); $i++) {
-        $number = $posicoesLetrasCorrespondentesArray[$i];
-        $posicoesLetrasCorrespondentesArrayCrytography[] = $number + $indice;
+    foreach ($posicoesLetrasCorrespondentesArray as $posicaoLetra) {
+        $posicoesLetrasCorrespondentesArrayCryptography[] = $posicaoLetra + INDICE;
     }
-    return $posicoesLetrasCorrespondentesArrayCrytography;
+
+    return $posicoesLetrasCorrespondentesArrayCryptography;
 }
 
-$posicoesPosIndice = calculatePosIndice($posicoes);
 
+/*
 
-$arrayNewPalavra = [];
-foreach ($posicoesPosIndice as $posicaoLetra) {
-    //for ($i=0;$i < count($arrayAlfabeto);$i++){
-    $arrayNewPalavra[] = $alfabetoInArray[$posicaoLetra];
-    //}
-}
-print_r($arrayNewPalavra);
+print_r(applyCryptography(localityOfLetters($palavraSegredo)));  - TESTANDO A FUNCIONALIDADE DA CRIPTOGRAFIA DE FATO. OPERANDO NORMALMENTE.
+
+ex.
+A == 0 
+B == 1
+...
+*/
