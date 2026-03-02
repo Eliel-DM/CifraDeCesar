@@ -2,7 +2,6 @@
 
 $palavraSegredo = "AAA"; // Salvar em um ENV 
 
-
 function getAlphabetInArray() {
     $alfabetoInString = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
     $alfabetoInArray = explode(",", $alfabetoInString);
@@ -42,17 +41,16 @@ function applyCryptography($posicoesLetrasCorrespondentesArray) {
     foreach ($posicoesLetrasCorrespondentesArray as $posicaoLetra) {
         $posicoesLetrasCorrespondentesArrayCryptography[] = $posicaoLetra + INDICE;
     }
-
     return $posicoesLetrasCorrespondentesArrayCryptography;
 }
 
 
 /*
-
 print_r(applyCryptography(localityOfLetters($palavraSegredo)));  - TESTANDO A FUNCIONALIDADE DA CRIPTOGRAFIA DE FATO. OPERANDO NORMALMENTE.
-
 ex.
 A == 0 
 B == 1
 ...
 */
+
+// Ainda precisa criar uma função principal para retornar a String já completamente corrigida com a criptografia. Também criar uma função

@@ -17,10 +17,10 @@ Texto cifrado: DEF
 
 ## 🚀 Tecnologias Utilizadas
 
--   PHP\
--   Estruturas de repetição\
--   Arrays\
--   Funções
+- PHP\
+- Estruturas de repetição\
+- Arrays\
+- Funções
 
 ## ⚙️ Como funciona o código
 
@@ -50,13 +50,13 @@ php cifra.php
 
 Para alterar o deslocamento da cifra, modifique a constante:
 
-``` php
+```php
 const indice = 5;
 ```
 
 Para mudar a palavra a ser cifrada:
 
-``` php
+```php
 $palavra = "TENTAADIVINHARAI";
 ```
 
@@ -64,17 +64,17 @@ $palavra = "TENTAADIVINHARAI";
 
 Este projeto foi criado para fins acadêmicos, visando:
 
--   Compreender conceitos básicos de criptografia\
--   Exercitar lógica de programação\
--   Trabalhar com manipulação de arrays em PHP
+- Compreender conceitos básicos de criptografia\
+- Exercitar lógica de programação\
+- Trabalhar com manipulação de arrays em PHP
 
 ## 📌 Melhorias Futuras
 
--   Implementar decifragem\
--   Permitir entrada de dados pelo usuário\
--   Tratar caracteres especiais e espaços\
--   Melhorar a estrutura do código (refatoração)\
--   Criar uma interface web simples
+- Implementar decifragem\
+- Permitir entrada de dados pelo usuário\
+- Tratar caracteres especiais e espaços\
+- Melhorar a estrutura do código (refatoração)\ ✅
+- Criar uma interface web simples
 
 ## 👨‍💻 Autor
 
