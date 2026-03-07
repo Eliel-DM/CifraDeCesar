@@ -9,10 +9,12 @@ function getAlphabetInArray() {
     return $alfabetoInArray;
 }
 
-function localityOfLetters(string $palavraSegredo) {
+function mainFunctionCipher(string $palavraSegredo) {
+
+    $posicoesLetrasCorrespondentesArray = [];
+    $posicoesLetrasCorrespondentesArrayCryptography = [];
 
     $alfabetoInArray = getAlphabetInArray();
-    $posicoesLetrasCorrespondentesArray = [];
     $arrayPalavraSegredo = str_split($palavraSegredo);
 
     for ($i = 0; $i < count($arrayPalavraSegredo); $i++) {
@@ -22,28 +24,22 @@ function localityOfLetters(string $palavraSegredo) {
             }
         }
     }
-    return $posicoesLetrasCorrespondentesArray;
-}
 
-/*
-print_r(localityOfLetters($palavraSegredo)) - TESTE PARA VALIDAR SE ESTAVAM SENDO CONTADO CORRETEMENTE AS POSIÇÕES DA LETRA DE ACORDO COM O ALFABETO. 
-ex.
-A == 0 
-B == 1
-...
-*/
+    $INDICE = 1; // Adicionar a um arquivo ENV;
 
-const INDICE = 5; // Adicionar a um arquivo ENV;
-
-function applyCryptography($posicoesLetrasCorrespondentesArray) {
-    $posicoesLetrasCorrespondentesArrayCryptography = [];
 
     foreach ($posicoesLetrasCorrespondentesArray as $posicaoLetra) {
-        $posicoesLetrasCorrespondentesArrayCryptography[] = $posicaoLetra + INDICE;
+        $posicoesLetrasCorrespondentesArrayCryptography[] = $alfabetoInArray[$posicaoLetra + $INDICE];
     }
-    return $posicoesLetrasCorrespondentesArrayCryptography;
+
+    $palavraSegredoCrifrada = implode("", $posicoesLetrasCorrespondentesArrayCryptography);
+
+    return $palavraSegredoCrifrada;
 }
 
+
+$teste = mainFunctionCipher($palavraSegredo);
+echo $teste;
 
 /*
 print_r(applyCryptography(localityOfLetters($palavraSegredo)));  - TESTANDO A FUNCIONALIDADE DA CRIPTOGRAFIA DE FATO. OPERANDO NORMALMENTE.
@@ -53,4 +49,4 @@ B == 1
 ...
 */
 
-// Ainda precisa criar uma função principal para retornar a String já completamente corrigida com a criptografia. Também criar uma função
+// Ainda precisa criar uma função principal para retornar a String já completamente corrigida com a criptografia. Também criar uma função;
